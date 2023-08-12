@@ -39,7 +39,7 @@ export default function AttestationPage({
     isLoading: resolveLoading,
     write: resolve,
   } = useContractWrite({
-    address: CONTRACTS.attestation[420].contract,
+    address: data?.resolver,
     abi: CONTRACTS.attestation[420].abi,
     functionName: "resolveAttestations",
   });
@@ -47,7 +47,7 @@ export default function AttestationPage({
     isLoading: splitLoading,
     write: splitFunds,
   } = useContractWrite({
-    address: CONTRACTS.attestation[420].contract,
+    address: data?.resolver,
     abi: CONTRACTS.attestation[420].abi,
     functionName: "splitMintingFunds",
   });
