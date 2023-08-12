@@ -123,7 +123,7 @@ export default function AttestationPage({
                   </Badge>
                   ))}
             </div>
-            <span className="text-gray-400 m-4">Resolution time: {secondsToDaysAndHours(data.attestResolutionDays)}</span>
+            <span className="text-gray-400 m-4">Revocation period: {secondsToDaysAndHours(data.attestResolutionDays)}</span>
             <h3 className="font-medium tracking-wider text-green-300">
             Schema Attributes
           </h3>

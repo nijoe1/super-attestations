@@ -518,13 +518,13 @@ export default function CreateAttestion() {
           
           <div className="grid md:grid-cols-2 w-full items-center gap-1.5">
             <div className="items-center gap-1.5">
-              <Label htmlFor="resultionDays">Resolution Days</Label>
+              <Label htmlFor="resultionDays">Revocation period</Label>
               <Input
                 name="resolutionDays"
                 type="number"
                 value={formData.resolutionDays}
                 onChange={handleChange}
-                placeholder="Enter resolution days in seconds"
+                placeholder="Enter revocation period (Hours)"
                 required={true}
               />
             </div>
