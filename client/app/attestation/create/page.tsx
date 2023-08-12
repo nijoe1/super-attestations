@@ -4,6 +4,7 @@ import SchemaList from "@/components/core/attestation/schema/schema-list";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import axios from 'axios';
 
 import {
   Select,
@@ -26,6 +27,7 @@ import { useState } from "react";
 import TagsInput from 'react-tagsinput';
 import { toast } from "react-toastify";
 import { Address, useContractWrite, usePublicClient } from "wagmi";
+import { Axios } from "axios";
 export type RevokerItem = {
   token: string;
   type: string;
@@ -59,6 +61,39 @@ export default function CreateAttestion() {
     revokerTokenID: 0,
     revokerStatus: 0,
   });
+  const [contractAddress, setContractAddress] = useState(false)
+
+
+  // TODO Get this address and put it correctly on the form Take care of what you are passing 
+  // Custom Token Gated => Attestors =>  Enum = 1 , Address = returned value , tokenID = 1
+  // Custom Token Gated => Revokers =>  Enum = 1 , Address = returned value , tokenID = 2
+
+  // Dont change the Worldcoin again with enum = 1 it is enum = 0 because it is ERC721 instead of ERC1155
+
+  
+  const fetchContractAddress = async (transactionHash: string) => {
+    try {
+      const response = await axios.get(
+        'https://api-goerli-optimistic.etherscan.io/api',
+        {
+          params: {
+            module: 'account',
+            action: 'txlistinternal',
+            txhash: transactionHash,
+            apikey: 'MPZZXTM8AFBE965THC1C7JPUA4BUA348KD'
+          }
+        }
+      );
+
+      // Assuming the response.data.result is an array with at least one element
+      const firstResult = response.data.result[0];
+      const fetchedContractAddress = firstResult.contractAddress;
+
+      setContractAddress(fetchedContractAddress);
+    } catch (error) {
+      console.error('Error fetching data:', error);
+    }
+  };
 
   
   const [customRevokers, setCustomRevokers] = useState<string[]>([]);
@@ -161,7 +196,7 @@ export default function CreateAttestion() {
     });
   };
 
-  const handleSubmit = (e: any) => {
+  const handleSubmit = async (e: any) => {
     e.preventDefault();
     console.log(formData);
 
@@ -205,7 +240,12 @@ export default function CreateAttestion() {
       customCreate({
         args: [attesters, revokers]
       })
+      // @ts-ignore
+      await fetchContractAddress(customData?.hash)
+      console.log(contractAddress)
+
     }
+    console.log(contractAddress)
     if(formData.attesterStatus == 6) tokenGateEnumA = 0
     if(formData.revokerStatus == 6) tokenGateEnumR = 0
 

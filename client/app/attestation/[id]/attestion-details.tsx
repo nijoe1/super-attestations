@@ -13,6 +13,8 @@ import Loading from "@/components/core/loading/loading";
 import { useEffect, useState } from "react";
 import AttestionData from "./attestion-table/attestion-data";
 import ResolveData from "./resolve-table/resolve-data";
+import { CONTRACTS } from '@/constants/contracts'
+import { useContractRead} from 'wagmi'
 
 export type Attestion = {
   attester: string;
@@ -56,6 +58,7 @@ export default function AttestionDetails({
   const [listResolve, setListResolve] = useState<Attestion[]>([]);
   const [listRevoke, setListRevoke] = useState<Attestion[]>([]);
   const [loading, setLoading] = useState(true);
+  const [resolver, setResolver] = useState<string>("")
 
   useEffect(() => {
     const getData = async (schemaUID:string, clientId = 420) => {
@@ -75,6 +78,7 @@ export default function AttestionDetails({
         setListResolve(resolve);
         setListRevoke(revoke);
         setListAttest(attest);
+        setResolver(result?.resolver)
         setLoading(false)
         return  result
 
@@ -84,6 +88,27 @@ export default function AttestionDetails({
       getData(id);
     }
   }, [attestations, id, resolutionDays]);
+
+  // TODOOOO @tse-lao display those tokenGated rules on the Library page
+  
+  // Returrns  [ enum type ,  tokenGatedAddress, tokenID]
+  const {data: attestersGatingToken, isLoading} = useContractRead({
+    // @ts-ignore
+		address: resolver,
+		abi: CONTRACTS.attestation[420].abi,
+		functionName: 'attestersGatingToken',
+		args: [],
+	});
+
+  // Returrns  [ enum type ,  tokenGatedAddress, tokenID]
+  const {data: revokersGatingToken, isLoading: isLOading} = useContractRead({
+		// @ts-ignore
+    address: resolver,
+		abi: CONTRACTS.attestation[420].abi,
+		functionName: 'revokersGatingToken',
+		args: [],
+	});
+
 
   if(loading) return <Loading />;
   return (
