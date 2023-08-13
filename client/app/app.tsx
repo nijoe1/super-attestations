@@ -8,7 +8,7 @@ import { publicProvider } from "wagmi/providers/public";
 
 
 import { AddressWrapper } from "@/components/core/account/address-wrapper";
-import { baseGoerli, optimismGoerli ,goerli} from "wagmi/chains";
+import { baseGoerli, optimismGoerli } from "wagmi/chains";
 import Web3AuthConnectorInstance from "./Web3AuthConnectorInstance";
 import Navbar from "./nav-bar";
 

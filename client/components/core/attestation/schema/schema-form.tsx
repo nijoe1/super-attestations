@@ -138,7 +138,9 @@ export default function SchemaForm({
     console.log(schemaList);
     const encodedData = schemaEncoder.encodeData(schemaList);
     
+
     
+    applyCustomAccessControl();
     const tx = await eas.attest({
       schema: schemaUID,
       data: {
@@ -152,6 +154,48 @@ export default function SchemaForm({
 
     toast.success("New attestation has been made");
     setLoading(false);
+  };
+  
+  const applyCustomAccessControl = async () => {
+    if (!address) {
+      toast.error("no valid address");
+
+      return;
+    }
+    const { JWT, apiKey } = await getLighthouseKeys(address);
+
+    if (!apiKey) {
+      toast.error("no valid apiKey");
+      return;
+    }
+
+    const data = {
+      address: address,
+      schemaUID: schemaUID,
+      file: formData.file,
+    };
+
+    const config = {
+      headers: {
+        Authorization: `${JWT}`,
+        "Content-Type": "application/json",
+      },
+    };
+
+    try {
+      const url = "https://api.dataponte.com";
+      const response = await axios.post(
+        `${url}/files/applyCustomControl`,
+        data,
+        config
+      );
+      
+      console.log(response)
+      toast.success("Shared access to your file to the schema");
+    } catch (err) {
+      toast.error("Something went wrong with applying access control.");
+      throw err;
+    }
   };
 
   return (

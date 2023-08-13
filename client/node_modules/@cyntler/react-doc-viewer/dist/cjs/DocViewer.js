@@ -1,0 +1,61 @@
+"use strict";
+var __makeTemplateObject = (this && this.__makeTemplateObject) || function (cooked, raw) {
+    if (Object.defineProperty) { Object.defineProperty(cooked, "raw", { value: raw }); } else { cooked.raw = raw; }
+    return cooked;
+};
+var __assign = (this && this.__assign) || function () {
+    __assign = Object.assign || function(t) {
+        for (var s, i = 1, n = arguments.length; i < n; i++) {
+            s = arguments[i];
+            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
+                t[p] = s[p];
+        }
+        return t;
+    };
+    return __assign.apply(this, arguments);
+};
+var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    var desc = Object.getOwnPropertyDescriptor(m, k);
+    if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
+      desc = { enumerable: true, get: function() { return m[k]; } };
+    }
+    Object.defineProperty(o, k2, desc);
+}) : (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    o[k2] = m[k];
+}));
+var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (function(o, v) {
+    Object.defineProperty(o, "default", { enumerable: true, value: v });
+}) : function(o, v) {
+    o["default"] = v;
+});
+var __importStar = (this && this.__importStar) || function (mod) {
+    if (mod && mod.__esModule) return mod;
+    var result = {};
+    if (mod != null) for (var k in mod) if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
+    __setModuleDefault(result, mod);
+    return result;
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+var react_1 = __importStar(require("react"));
+var styled_components_1 = __importStar(require("styled-components"));
+var HeaderBar_1 = require("./components/HeaderBar");
+var ProxyRenderer_1 = require("./components/ProxyRenderer");
+var defaultTheme_1 = require("./defaultTheme");
+var renderers_1 = require("./renderers");
+var DocViewerProvider_1 = require("./store/DocViewerProvider");
+var DocViewer = (0, react_1.forwardRef)(function (props, ref) {
+    var documents = props.documents, theme = props.theme;
+    if (!documents) {
+        throw new Error("Please provide an array of documents to DocViewer!");
+    }
+    return (react_1.default.createElement(DocViewerProvider_1.DocViewerProvider, __assign({ ref: ref, pluginRenderers: renderers_1.DocViewerRenderers }, props),
+        react_1.default.createElement(styled_components_1.ThemeProvider, { theme: theme ? __assign(__assign({}, defaultTheme_1.defaultTheme), theme) : defaultTheme_1.defaultTheme },
+            react_1.default.createElement(Container, __assign({ id: "react-doc-viewer", "data-testid": "react-doc-viewer" }, props),
+                react_1.default.createElement(HeaderBar_1.HeaderBar, null),
+                react_1.default.createElement(ProxyRenderer_1.ProxyRenderer, null)))));
+});
+exports.default = (0, react_1.memo)(DocViewer);
+var Container = styled_components_1.default.div(templateObject_1 || (templateObject_1 = __makeTemplateObject(["\n  display: flex;\n  flex-direction: column;\n  overflow: hidden;\n  background: #ffffff;\n  width: 100%;\n  height: 100%;\n"], ["\n  display: flex;\n  flex-direction: column;\n  overflow: hidden;\n  background: #ffffff;\n  width: 100%;\n  height: 100%;\n"])));
+var templateObject_1;

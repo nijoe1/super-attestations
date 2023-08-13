@@ -1,0 +1,8 @@
+{
+  "/page": "/",
+  "/favicon.ico/route": "/favicon.ico",
+  "/attestation/page": "/attestation",
+  "/attestation/[id]/page": "/attestation/[id]",
+  "/attestation/create/page": "/attestation/create",
+  "/profile/[address]/page": "/profile/[address]"
+}

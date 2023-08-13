@@ -1,4 +1,4 @@
-// File: /home/nick_w3/super/superAttestations/client/app/attestation/page.tsx
+// File: /Users/koenschuite/github/super-attestations/client/app/attestation/page.tsx
 import * as entry from '../../../../app/attestation/page.js'
 import type { ResolvingMetadata } from 'next/dist/lib/metadata/types/metadata-interface.js'
 

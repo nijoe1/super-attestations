@@ -1,4 +1,8 @@
 {
   "/page": "app/page.js",
-  "/attestation/page": "app/attestation/page.js"
+  "/favicon.ico/route": "app/favicon.ico/route.js",
+  "/attestation/page": "app/attestation/page.js",
+  "/attestation/[id]/page": "app/attestation/[id]/page.js",
+  "/attestation/create/page": "app/attestation/create/page.js",
+  "/profile/[address]/page": "app/profile/[address]/page.js"
 }

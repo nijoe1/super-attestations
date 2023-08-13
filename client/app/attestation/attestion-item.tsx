@@ -29,7 +29,7 @@ export default function AttestionItem({ schema}: {schema: any}) {
           <div className="text-xl text-white hover:text-green-300" >{schema.name}</div>
       </div>
       <div>
-      <div className="text-gray-200 font-light text-sm m-2">
+      <div className="text-gray-200 font-light text-sm m-2 h-[100px] overflow-auto">
         {schema.description}
        </div>
     </div>
