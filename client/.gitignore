@@ -1,3 +1,8 @@
+<<<<<<< HEAD
 .env
 .next
 node_modules
+=======
+.vscode
+node_modules
+>>>>>>> refs/remotes/origin/main
