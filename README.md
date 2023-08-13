@@ -85,3 +85,10 @@ We've harnessed the power of Safe Paymaster in conjunction with ScopeGuard from 
 
 - [Safe-Paymaster-Contracts](https://github.com/nijoe1/super-attestations/tree/main/contracts/contracts/Safe_Paymaster)
 - [SafexGelatoScripts](https://github.com/nijoe1/super-attestations/tree/main/contracts/scripts)
+
+
+## What is next for the SuperAttestations platform?
+
+The SuperAttestations platform is poised for dynamic growth. Our upcoming plans include developing an SDK for seamless integration and empowering others to harness our platform's capabilities. We're also introducing tag-based queries for efficient content discovery and integrating off-chain attestations through EAS, creating a feedback layer for DataVaults. These initiatives will enhance user experience, expand utility, and bolster transparency, marking our continued commitment to revolutionizing content validation, access, and trust.
+
+
