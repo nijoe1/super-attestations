@@ -21,6 +21,8 @@ module.exports = async({ deployments }) => {
     const EAS_Optimism = "0x4200000000000000000000000000000000000021"
     const FactoryOptimism = "0x4023B304553184AA15105418Ef00EA69Fb13a562"
 
+
+    // Deploying the Paymaste Allowance to set it in the Safe Guard to sponsor only spesific transactions
     const PaymasterAllowance = await hre.ethers.getContractFactory("paymasterAllowance");
     const paymasterAllowance = await PaymasterAllowance.deploy(EAS_Optimism, FactoryOptimism);
     await paymasterAllowance.deployed();
@@ -29,6 +31,7 @@ module.exports = async({ deployments }) => {
 
     let targetAddressAllowedOptimism = "0x00342806eabAAA926970576BFB518f310200FF41"
 
+    // ScopeGuard deployment 
     const ScopeGuard = await hre.ethers.getContractFactory("ScopeGuard");
     const scopeGuard = await ScopeGuard.deploy();
     await scopeGuard.deployed();

@@ -4,19 +4,23 @@ import { SafeAccountConfig, EthersAdapter,ContractNetworksConfig } from "@safe-g
 import { SafeTransactionDataPartial } from "@safe-global/safe-core-sdk-types";
 
 import Safe, { SafeFactory } from "@safe-global/protocol-kit";
+import * as dotenv from 'dotenv';
+
+const PRIVATE_KEY = process.env.PRIVATE_KEY;
+const RPC_URL = process.env.RPC_URL
 
 async function main() {
   const config = {
-    RPC_URL:
-      "https://opt-goerli.g.alchemy.com/v2/Qs0oArxRd6ljm5ELdIzJ1qHhbvbjndSu",
-    DEPLOYER_ADDRESS_PRIVATE_KEY: "",
+    RPC_URL: RPC_URL,
+    DEPLOYER_ADDRESS_PRIVATE_KEY: PRIVATE_KEY,
     DEPLOY_SAFE: {
-      OWNERS: ["0x9C5e3cAC8166eD93F76BC0469b8Bf3ca715bA6B7"],
+      OWNERS: ["address 1"],
       THRESHOLD: 1, // <SAFE_THRESHOLD>
       SALT_NONCE: Math.floor(Math.random() * 9999).toString(),
     },
   };
 
+    // OPtimism network config 
     const contractNetworks: ContractNetworksConfig = {
     [420]: {
       safeMasterCopyAddress: "0xfb1bffC9d739B8D520DaF37dF666da4C687191EA",
@@ -37,7 +41,7 @@ async function main() {
   const saltNonce = config.DEPLOY_SAFE.SALT_NONCE;
   const provider = new ethers.providers.JsonRpcProvider(config.RPC_URL);
   const deployerSigner = new ethers.Wallet(
-    config.DEPLOYER_ADDRESS_PRIVATE_KEY,
+    config.DEPLOYER_ADDRESS_PRIVATE_KEY as string,
     provider
   );
 
@@ -51,50 +55,56 @@ async function main() {
 
   const safeFactory = await SafeFactory.create({ ethAdapter });
 
-  // const safeSdk: Safe = await safeFactory.deploySafe({ safeAccountConfig });
 
-  // //   Deploy Safe
-  // const safe = await safeFactory.deploySafe({
-  //     safeAccountConfig,
-  // });
+  // Deploying Safe
+  const safeSdk: Safe = await safeFactory.deploySafe({ safeAccountConfig });
 
-  // const newSafeAddress = await safeSdk.getAddress();
-  const safeAddress = "0x002f897b24E6D0f94599D17C1ef9b9d7c9d4A7e8";
-  const safeSdk = await Safe.create({ ethAdapter, safeAddress,contractNetworks });
+  // Deploy Safe
+  const safe = await safeFactory.deploySafe({
+      safeAccountConfig,
+  });
 
-  const safeTransactionData: SafeTransactionDataPartial = {
-    to: "0x9C5e3cAC8166eD93F76BC0469b8Bf3ca715bA6B7",
+  const newSafeAddress = await safeSdk.getAddress();
+  console.log("Your safe address is : ",newSafeAddress)
+
+  //@ts-ignore 
+  const safeSdk1 = await Safe.create({ ethAdapter, newSafeAddress, contractNetworks });
+ 
+
+  // Enable the Guard
+  const safeEnableGuard: SafeTransactionDataPartial = {
+    to: newSafeAddress,
     data: "0x00",
     value: "0",
   };
 
-  console.log(safeAddress);
-  const safeTransaction = await safeSdk.createTransaction({
-    safeTransactionData,
+  const safeTransaction = await safeSdk1.createTransaction({
+    safeTransactionData: safeEnableGuard,
   });
   console.log(safeTransaction);
 
-  const safeTxHash = await safeSdk.getTransactionHash(safeTransaction);
+  const safeTxHash = await safeSdk1.getTransactionHash(safeTransaction);
   console.log(safeTxHash)
-  const senderSignature = await safeSdk.signTransactionHash("0x56da3ae680cf1a0a8c9de5d0fd6601ea0abe308d188dca8e152b500a962979ad");
-  console.log(senderSignature)
-//   await safeService.proposeTransaction({
-//     safeAddress,
-//     safeTransactionData: safeTransaction.data,
-//     safeTxHash,
-//     senderAddress: "0x0D1781F0b693b35939A49831A6C799B938Bd2F80",
-//     senderSignature: senderSignature.data,
-//   });
+  const senderSignature = await safeSdk1.signTransactionHash("safeTxHash");
+  // @ts-ignore
+  await safeService.proposeTransaction({
+    // @ts-ignore
+    newSafeAddress,
+    safeTransactionData: safeTransaction.data,
+    safeTxHash,
+    senderAddress: "0x0D1781F0b693b35939A49831A6C799B938Bd2F80",
+    senderSignature: senderSignature.data,
+  });
 
-// //   let signature = await safeSdk.signTransactionHash(safeTxHash);
-//   await safeService.confirmTransaction(safeTxHash, senderSignature.data);
+//   let signature = await safeSdk.signTransactionHash(safeTxHash);
+  await safeService.confirmTransaction(safeTxHash, senderSignature.data);
 
-//   const executeTxResponse = await safeSdk.executeTransaction(safeTransaction);
-//   const receipt =
-//     executeTxResponse.transactionResponse &&
-//     (await executeTxResponse.transactionResponse.wait());
+  const executeTxResponse = await safeSdk.executeTransaction(safeTransaction);
+  const receipt =
+    executeTxResponse.transactionResponse &&
+    (await executeTxResponse.transactionResponse.wait());
 
-//   console.log(receipt);
+  console.log(receipt);
 }
 main();
 
