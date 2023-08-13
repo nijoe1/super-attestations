@@ -35,6 +35,18 @@ contract paymasterAllowance{
         eas.revokeByDelegation(delegatedRequest);
     }
 
+    function mint(bytes32 schemaUID, uint256 subscriptionMonths)public (
+        superAttestationsFactory.mint(schemaUID, subscriptionMonths);
+    )
+
+    function resolveAttestations(address schemaUID) external {
+        
+    } 
+
+    function distributeFunds(bytes32 schema32) external {
+        
+    }
+
     modifier onlyAllowedSchemas(bytes32 schemaUID) {
         require(superAttestationsFactory.onlyAllowedTokens(schemaUID), "Non-existent token");
         _;
