@@ -45,9 +45,6 @@ With SuperAttest, we're shaping the future of content validation and access, fos
 
 
 ## TECHNOLOGIES USED
-
-<details>
-<summary>SUPERHACK SPONSORS USAGE DESCRIPTIONS</summary>
   
 ### ETHEREUM ATTESTATION SERVICE
 
@@ -97,9 +94,12 @@ We've harnessed the power of Safe Paymaster in conjunction with ScopeGuard from 
 
 - [Safe-Paymaster-Contracts](https://github.com/nijoe1/super-attestations/tree/main/contracts/contracts/Safe_Paymaster)
 - [SafexGelatoScripts](https://github.com/nijoe1/super-attestations/tree/main/contracts/scripts)
-  
-</details>
+- [SetGuard transaction](https://goerli-optimism.etherscan.io//tx/0xcbee5a8e54649b43cec8e4324280e1a0c65f5bd1aed4b5f72f5110edc232f39c#eventlog)
+- [Sponsored transaction attest](https://goerli-optimism.etherscan.io//tx/0x3d00d0ed84ac9b95b3257619b485b8074cc5ca10912892699dbb58c81846625e)
+- [Sponsored transaction2 attest](https://goerli-optimism.etherscan.io//tx/0xab3271567f4b56450b81bfc13e7c824ae2dec740ba138c5174f077bba7c04c96)
 
+Our safe implementation guard only allows transactions to get executed from this [contract paymaster allowance](https://goerli-optimism.etherscan.io/address/0x00342806eabaaa926970576bfb518f310200ff41#code) that allows only our application transactions to get sponsored ***"Only for the Attestation schemas created by our Factory contract"***
+  
 ## What is next for the SuperAttestations platform?
 
 The SuperAttestations platform is poised for dynamic growth. Our upcoming plans include developing an SDK for seamless integration and empowering others to harness our platform's capabilities. We're also introducing tag-based queries for efficient content discovery and integrating off-chain attestations through EAS, creating a feedback layer for DataVaults. These initiatives will enhance user experience, expand utility, and bolster transparency, marking our continued commitment to revolutionizing content validation, access, and trust.
