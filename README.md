@@ -3,7 +3,7 @@
 ## 🦸Welcome to SUPER ATTESTATIONS🦸 
 <img src="https://gateway.lighthouse.storage/ipfs/QmeJWU35G1F1JUMw5PsW2UaCYp3n3NmStrBiymuAQmGu28">
 
-### This repo is a merge of those repos created for the ETHGLOBAL Supehack
+### This repo is a merge of those repos created for the ETHGLOBAL SUPERHACK
 - [client](https://github.com/tse-lao/data-library)
 - [contracts](https://github.com/nijoe1/superAttestations)
 
@@ -46,6 +46,9 @@ With SuperAttest, we're shaping the future of content validation and access, fos
 
 ## TECHNOLOGIES USED
 
+<details>
+<summary>SUPERHACK SPONSORS USAGE DESCRIPTIONS</summary>
+  
 ### ETHEREUM ATTESTATION SERVICE
 
 SuperAttestations harnesses the power of the Ethereum Attestation Service (EAS) to empower users in designing their subscription-based schemas. These customizable schemas play a pivotal role in defining the rules of attestation, revocation, and the duration of revocation periods. This innovation is facilitated by implementing a superResolver proxy factory, a cornerstone of our platform's architecture. Attesters contribute data, revokers meticulously verify the submitted content, and subscribers gain access to decrypt the attestation content. This synergy of elements within the EAS framework ensures a robust and secure ecosystem, where data validation and access are elevated to new levels of transparency and trust.
@@ -57,9 +60,11 @@ SuperAttestations harnesses the power of the Ethereum Attestation Service (EAS) 
 
 We created a ***human verification soulbound badge ERC721 token that can get claimed once***.
 This token is then minted on the Base Blockchain using **Layer Zero**.
-- [CrossChainTransaction](https://testnet.layerzeroscan.com/10132/address/0x1cf8ed1107427fe78e89938c3988376523569a48/message/10160/address/0xb84c99e037f326157fe9196c89a0464f6202c9bb/nonce/1)
-- [Optimism Worldcoin contract](https://goerli-optimism.etherscan.io/address/0x1cf8ed1107427fe78e89938c3988376523569a48#code)_
+- [CrossChainTransaction LayerZeroScan](https://testnet.layerzeroscan.com/10132/address/0x1cf8ed1107427fe78e89938c3988376523569a48/message/10160/address/0xb84c99e037f326157fe9196c89a0464f6202c9bb/nonce/1)
+- [Optimism Worldcoin cross chain mint](https://goerli-optimism.etherscan.io/tx/0xd7943c079205ffae67b38d5774ccbe06fe75e18079fca0b97ab975750a3cacc9)
+- [Optimism Worldcoin contract](https://goerli-optimism.etherscan.io/address/0x1cf8ed1107427fe78e89938c3988376523569a48)
 - [Base Destination contract](https://goerli.basescan.org/address/0xb84C99e037f326157Fe9196c89A0464F6202C9bb#code)
+- [Goerli Destination contract](https://goerli.etherscan.io/address/0xda45e5ad945bc5330f7a6f0d3504cbbfc5fd401a#internaltx)
 
 ### OPTIMISM & BASE
 
@@ -92,7 +97,8 @@ We've harnessed the power of Safe Paymaster in conjunction with ScopeGuard from 
 
 - [Safe-Paymaster-Contracts](https://github.com/nijoe1/super-attestations/tree/main/contracts/contracts/Safe_Paymaster)
 - [SafexGelatoScripts](https://github.com/nijoe1/super-attestations/tree/main/contracts/scripts)
-
+  
+</details>
 
 ## What is next for the SuperAttestations platform?
 
