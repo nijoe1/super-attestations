@@ -11,6 +11,12 @@
 
 Redefining Content Validation & Access. Empowering data providers, verifiers, and subscription NFTs, we introduce innovative content validation, access, and verifiable credentials. Join us in revolutionizing content ecosystems and trust across industries.
 
+### Data Vaults (Libraries):
+
+A Data Vault within the SuperAttest ecosystem represents a carefully curated repository of digital content, embodying themes, contexts, or industries. These specialized libraries are meticulously designed with token-gated mechanisms, dictating the participants who can contribute content, validate it, and revoke attestations, as well as defining subscription costs for access. Essentially, Data Vaults serve as controlled environments where data providers, verifiers, and subscribers engage harmoniously, ensuring the authenticity and controlled distribution of content. These vaults empower creators to tailor access dynamics, facilitating exclusive content while redefining content validation paradigms across diverse sectors.
+
+SuperAttest's Data Vaults reshape content validation by combining content management, quality control, and controlled access. These repositories foster collaboration and integrity among data providers, verifiers, and subscribers, establishing new benchmarks in content credibility and accessibility. Through strategic ***token-gated options*** ( ***ERC721 - ERC1155 - ERC20 - ONLY HUMANS using WORLDCOIN - ZKERC1155 using ([SISMO](https://github.com/nijoe1/super-attestations/blob/main/contracts/contracts/TokenGatedContracts.sol/ERC1155/ZKAccessControl.sol)***) ) we ***restrict*** who can ***Provide*** and who can ***Verify Data***, each Data Vault maintains a distinct ecosystem, promoting trust and innovation across industries, thus epitomizing the revolutionary potential of the SuperAttest platform.
+
 ### Data Providers (Attestors):
 
 Our platform thrives on the contributions of data providers, also known as attestors. Attestors are individuals or entities who submit a wide array of digital content, meticulously tailored to specific contexts and themes. These submissions serve as the foundation of our content ecosystem, ensuring diversity and relevance.
@@ -42,14 +48,14 @@ With SuperAttest, we're shaping the future of content validation and access, fos
 
 ### ETHEREUM ATTESTATION SERVICE
 
-SuperAttestations harnesses the power of the Ethereum Attestation Service (EAS) to empower users in designing their subscription-based schemas. These customizable schemas play a pivotal role in defining the rules of attestation, revocation, and the duration of revocation periods. This innovation is facilitated through the implementation of a superResolver proxy factory, a cornerstone of our platform's architecture. Attesters contribute data, revokers meticulously verify the submitted content, and subscribers gain access to decrypt the attestation content. This synergy of elements within the EAS framework ensures a robust and secure ecosystem, where data validation and access are elevated to new levels of transparency and trust.
+SuperAttestations harnesses the power of the Ethereum Attestation Service (EAS) to empower users in designing their subscription-based schemas. These customizable schemas play a pivotal role in defining the rules of attestation, revocation, and the duration of revocation periods. This innovation is facilitated by implementing a superResolver proxy factory, a cornerstone of our platform's architecture. Attesters contribute data, revokers meticulously verify the submitted content, and subscribers gain access to decrypt the attestation content. This synergy of elements within the EAS framework ensures a robust and secure ecosystem, where data validation and access are elevated to new levels of transparency and trust.
 
 - [SuperResolverFactory](https://github.com/nijoe1/super-attestations/blob/main/contracts/contracts/superAttestationsSchemaFactory.sol)
 - [SuperResolver](https://github.com/nijoe1/super-attestations/blob/main/contracts/contracts/superResolver.sol)
 
 ### WORLDCOIN X LAYER ZERO
 
-We created a human verification soulbound badge ERC721 token that can get claimed once.
+We created a ***human verification soulbound badge ERC721 token that can get claimed once***.
 This token is then minted on the Base Blockchain using the Layer Zero protocol
 - [CrossChainTransaction](https://testnet.layerzeroscan.com/10132/address/0x1cf8ed1107427fe78e89938c3988376523569a48/message/10160/address/0xb84c99e037f326157fe9196c89a0464f6202c9bb/nonce/1)
 - [Optimism Worldcoin contract](https://goerli-optimism.etherscan.io/address/0x1cf8ed1107427fe78e89938c3988376523569a48#code)_
@@ -75,8 +81,8 @@ SuperAttestations is built on the foundation of the Ethereum Attestation Service
 
 Leveraging The Graph's capabilities, we've deployed SubGraphs to meticulously index all the Data Vaults created on both the Goerli Optimism and Goerli Base chains. This strategic deployment ensures that our platform seamlessly accesses and organizes the vast array of data within these vaults, enhancing the efficiency and effectiveness of our system.
 
-- [SubGraph](https://github.com/tse-lao/attestations)
-- [SubGraph](https://github.com/tse-lao/superattestation)
+- [SubGraph-OptimismGoerli](https://github.com/tse-lao/superattestation)
+- [SubGraph-BaseGoerli](https://github.com/tse-lao/baseGraph)
 
   
 ### SAFE X GELATO
