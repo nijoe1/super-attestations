@@ -27,11 +27,11 @@ Expert verifiers, as well as community members, play a pivotal role within Super
 
 ### Subscription NFTs (Verified Data Groups):
 
-One of our groundbreaking concepts is the introduction of subscription NFTs. These NFTs represent verified data groups, providing subscribers with the key to unlock and access decrypted content. Subscribers equipped with subscription NFTs can delve into exclusive insights and information from data providers. This feature cultivates a trusted environment where only authorized subscribers gain access, safeguarding the integrity of the data.
+One of our groundbreaking concepts is the introduction of subscription NFTs. These NFTs represent verified data groups, providing subscribers with the key to unlock and access decrypted content. Subscribers equipped with subscription NFTs can delve into exclusive insights and information from data providers. This feature cultivates a trusted environment where only authorized subscribers gain access, safeguarding the integrity of the data. [subscribe function](https://github.com/nijoe1/super-attestations/blob/main/contracts/contracts/superAttestationsSchemaFactory.sol#L181) & [hasAccess function](https://github.com/nijoe1/super-attestations/blob/main/contracts/contracts/superAttestationsSchemaFactory.sol#L203) 
 
 ### Distribution of Minting Funds:
 
-Within SuperAttest, fairness is a core principle. Minting funds for each Data Vault are distributed equitably among attestors who have conducted verified attestations, all thanks to the Third WEB splitter contract. This decentralized mechanism ensures that those who contribute accurate attestations are rewarded accordingly. The distribution of funds is seamlessly calculated within each Data Vault's smart contract, guaranteeing transparency and integrity.
+Within SuperAttest, fairness is a core principle. Minting funds for each Data Vault are distributed equitably among attestors who have conducted verified attestations, all thanks to the Third WEB splitter contract. This decentralized mechanism ensures that those who contribute accurate attestations are rewarded accordingly. The distribution of funds is seamlessly calculated within each Data Vault's [smart contract](https://github.com/nijoe1/super-attestations/blob/main/contracts/contracts/superResolver.sol#L188), guaranteeing transparency and integrity.
 
 #### SuperAttest Impacts Various Industries:
 
@@ -56,7 +56,7 @@ SuperAttestations harnesses the power of the Ethereum Attestation Service (EAS) 
 ### WORLDCOIN X LAYER ZERO
 
 We created a ***human verification soulbound badge ERC721 token that can get claimed once***.
-This token is then minted on the Base Blockchain using the Layer Zero protocol
+This token is then minted on the Base Blockchain using **Layer Zero**.
 - [CrossChainTransaction](https://testnet.layerzeroscan.com/10132/address/0x1cf8ed1107427fe78e89938c3988376523569a48/message/10160/address/0xb84c99e037f326157fe9196c89a0464f6202c9bb/nonce/1)
 - [Optimism Worldcoin contract](https://goerli-optimism.etherscan.io/address/0x1cf8ed1107427fe78e89938c3988376523569a48#code)_
 - [Base Destination contract](https://goerli.basescan.org/address/0xb84C99e037f326157Fe9196c89A0464F6202C9bb#code)
@@ -81,6 +81,7 @@ SuperAttestations is built on the foundation of the Ethereum Attestation Service
 
 Leveraging The Graph's capabilities, we've deployed SubGraphs to meticulously index all the Data Vaults created on both the Goerli Optimism and Goerli Base chains. This strategic deployment ensures that our platform seamlessly accesses and organizes the vast array of data within these vaults, enhancing the efficiency and effectiveness of our system.
 
+- [Events](https://github.com/nijoe1/super-attestations/blob/main/contracts/contracts/superAttestationsSchemaFactory.sol#L59)
 - [SubGraph-OptimismGoerli](https://github.com/tse-lao/superattestation)
 - [SubGraph-BaseGoerli](https://github.com/tse-lao/baseGraph)
 
